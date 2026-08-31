@@ -1,0 +1,1039 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 4090
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 799.3703149606299121 Td
+(Program 1) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 779.5277952755905062 Td
+(import pandas as pd) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 739.8427559055118081 Td
+(data = pd.DataFrame\([) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 720.0002362204724022 Td
+(    ['Sunny','Warm','Normal','Strong','Warm','Same','Yes'],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 700.15771653543311 Td
+(    ['Sunny','Warm','High','Strong','Warm','Same','Yes'],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 680.3151968503937042 Td
+(    ['Rainy','Cold','High','Strong','Warm','Change','No'],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 660.4726771653542983 Td
+(    ['Sunny','Warm','High','Strong','Cool','Change','Yes']) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 640.6301574803148924 Td
+(], columns=['Sky','AirTemp','Humidity','Wind','Water','Forecast','EnjoySport']\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 600.9451181102361943 Td
+(X = data.iloc[:, :-1].values) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 581.1025984251967884 Td
+(y = data.iloc[:, -1].values) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 561.2600787401574962 Td
+(n = X.shape[1]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 521.5750393700786844 Td
+(# ---- Find-S Algorithm ----) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 501.7325196850393354 Td
+(hypothesis = ['0'] * n) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 481.8899999999999295 Td
+(for i in range\(len\(X\)\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 462.0474803149605805 Td
+(    if y[i] == 'Yes':) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 442.2049606299212314 Td
+(        for j in range\(n\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 422.3624409448818255 Td
+(            if hypothesis[j] == '0':) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 402.5199212598424765 Td
+(                hypothesis[j] = X[i][j]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 382.6774015748030706 Td
+(            elif hypothesis[j] != X[i][j]:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 362.8348818897637216 Td
+(                hypothesis[j] = '?') Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 323.1498425196849666 Td
+(print\("Most Specific Hypothesis \(Find-S\):", hypothesis\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 283.4648031496062686 Td
+(# ---- Candidate Elimination Algorithm ----) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 263.6222834645668627 Td
+(S = [hypothesis.copy\(\)]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 243.7797637795274568 Td
+(G = [['?'] * n]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 204.0947244094487587 Td
+(for i in range\(len\(X\)\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 184.2522047244093528 Td
+(    if y[i] == 'Yes':) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 164.4096850393699469 Td
+(        G = [g for g in G if all\(g[j] == '?' or g[j] == X[i][j] for j in range\(n\)\)]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 144.5671653543306547 Td
+(    else:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 124.7246456692912489 Td
+(        new_G = []) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 104.882125984251843 Td
+(        for g in G:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 85.0396062992125508 Td
+(            for j in range\(n\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 65.1970866141731449 Td
+(                if g[j] == '?':) Tj
+ET
+endstream
+endobj
+5 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 6 0 R
+>>
+endobj
+6 0 obj
+<<
+/Length 3625
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 799.3703149606299121 Td
+(                    for value in set\(X[:, j]\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 779.5277952755905062 Td
+(                        if value != X[i][j] and value == S[0][j]:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 759.6852755905511003 Td
+(                            new_hypothesis = g.copy\(\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 739.8427559055118081 Td
+(                            new_hypothesis[j] = value) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 720.0002362204724022 Td
+(                            new_G.append\(new_hypothesis\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 700.15771653543311 Td
+(        G = new_G) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 660.4726771653542983 Td
+(print\("S \(Specific Boundary\):", S\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 640.6301574803148924 Td
+(print\("G \(General Boundary\):", G\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 541.4175590551180903 Td
+(Program 2) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 521.5750393700786844 Td
+(import pandas as pd) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 501.7325196850393354 Td
+(from sklearn.datasets import load_iris) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 481.8899999999999295 Td
+(import wittgenstein as lw) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 442.2049606299212314 Td
+(iris = load_iris\(as_frame=True\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 422.3624409448818255 Td
+(X = iris.data) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 402.5199212598424765 Td
+(y = iris.target) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 362.8348818897637216 Td
+(# ---- RIPPER Algorithm ----) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 342.9923622047243725 Td
+(model = lw.RIPPER\(\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 323.1498425196849666 Td
+(model.fit\(X, y, pos_class=0\)   # class 0 = setosa) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 303.3073228346455608 Td
+(print\("RIPPER Rules:"\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 283.4648031496062686 Td
+(print\(model.ruleset_\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 243.7797637795274568 Td
+(# ---- Simplified FOIL Algorithm ----) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 223.9372440944881646 Td
+(y_binary = \(y == 0\).astype\(int\)   # 1 = setosa, 0 = not setosa) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 184.2522047244093528 Td
+(rules = []) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 164.4096850393699469 Td
+(for column in X.columns:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 144.5671653543306547 Td
+(    for value in X[column].unique\(\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 124.7246456692912489 Td
+(        rows_with_value = X[column] == value) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 104.882125984251843 Td
+(        if y_binary[rows_with_value].all\(\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 85.0396062992125508 Td
+(            rules.append\(f"IF {column} = {value} THEN class = 1"\)) Tj
+ET
+endstream
+endobj
+7 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 8 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 3994
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 799.3703149606299121 Td
+(print\("\\nFOIL Rules \(Setosa vs Not\):"\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 779.5277952755905062 Td
+(for rule in rules[:6]:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 759.6852755905511003 Td
+(    print\(rule\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 680.3151968503937042 Td
+(program 3) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 660.4726771653542983 Td
+(from sklearn.datasets import load_breast_cancer) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 640.6301574803148924 Td
+(from sklearn.model_selection import train_test_split) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 620.7876377952754865 Td
+(from sklearn.tree import DecisionTreeClassifier) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 600.9451181102361943 Td
+(from sklearn.ensemble import BaggingClassifier, AdaBoostClassifier) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 581.1025984251967884 Td
+(from sklearn.metrics import accuracy_score, confusion_matrix) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 541.4175590551180903 Td
+(X, y = load_breast_cancer\(return_X_y=True\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 521.5750393700786844 Td
+(X_train, X_test, y_train, y_test = train_test_split\() Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 501.7325196850393354 Td
+(    X, y, test_size=0.3, random_state=42, stratify=y) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 481.8899999999999295 Td
+(\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 442.2049606299212314 Td
+(# ---- Bagging ----) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 422.3624409448818255 Td
+(bag_model = BaggingClassifier\(estimator=DecisionTreeClassifier\(\), n_estimators=50,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 402.5199212598424765 Td
+(random_state=42\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 382.6774015748030706 Td
+(bag_model.fit\(X_train, y_train\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 362.8348818897637216 Td
+(y_pred_bag = bag_model.predict\(X_test\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 342.9923622047243725 Td
+(print\("Bagging Accuracy:", accuracy_score\(y_test, y_pred_bag\)\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 323.1498425196849666 Td
+(print\("Bagging Confusion Matrix:\\n", confusion_matrix\(y_test, y_pred_bag\)\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 283.4648031496062686 Td
+(# ---- Boosting \(AdaBoost\) ----) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 263.6222834645668627 Td
+(boost_model = AdaBoostClassifier\(estimator=DecisionTreeClassifier\(max_depth=1\),) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 243.7797637795274568 Td
+(n_estimators=50, random_state=42\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 223.9372440944881646 Td
+(boost_model.fit\(X_train, y_train\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 204.0947244094487587 Td
+(y_pred_boost = boost_model.predict\(X_test\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 184.2522047244093528 Td
+(print\("\\nBoosting Accuracy:", accuracy_score\(y_test, y_pred_boost\)\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 164.4096850393699469 Td
+(print\("Boosting Confusion Matrix:\\n", confusion_matrix\(y_test, y_pred_boost\)\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 85.0396062992125508 Td
+(Program 4) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 65.1970866141731449 Td
+(import matplotlib.pyplot as plt) Tj
+ET
+endstream
+endobj
+9 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 10 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 2437
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 799.3703149606299121 Td
+(from sklearn.datasets import load_iris) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 779.5277952755905062 Td
+(from sklearn.cluster import KMeans) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 759.6852755905511003 Td
+(from sklearn.preprocessing import StandardScaler) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 720.0002362204724022 Td
+(iris = load_iris\(as_frame=True\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 700.15771653543311 Td
+(X = iris.data) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 660.4726771653542983 Td
+(scaler = StandardScaler\(\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 640.6301574803148924 Td
+(X_scaled = scaler.fit_transform\(X\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 600.9451181102361943 Td
+(kmeans = KMeans\(n_clusters=3, random_state=42, n_init=10\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 581.1025984251967884 Td
+(clusters = kmeans.fit_predict\(X_scaled\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 561.2600787401574962 Td
+(print\("Cluster labels \(first 5 samples\):", clusters[:5]\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 521.5750393700786844 Td
+(plt.scatter\(X_scaled[:, 0], X_scaled[:, 1], c=clusters, cmap='viridis', s=50\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 501.7325196850393354 Td
+(plt.scatter\(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 481.8899999999999295 Td
+(            c='red', marker='X', s=200, label="Centroids"\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 462.0474803149605805 Td
+(plt.title\("K-Means Clustering \(Iris\)"\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 442.2049606299212314 Td
+(plt.xlabel\("Feature 1 \(scaled\)"\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 422.3624409448818255 Td
+(plt.ylabel\("Feature 2 \(scaled\)"\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 402.5199212598424765 Td
+(plt.legend\(\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+42.5196850393700814 382.6774015748030706 Td
+(plt.show\(\)) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R 5 0 R 7 0 R 9 0 R ]
+/Count 4
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+19 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+20 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+21 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+22 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+23 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+24 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 11 0 R
+/F2 12 0 R
+/F3 13 0 R
+/F4 14 0 R
+/F5 15 0 R
+/F6 16 0 R
+/F7 17 0 R
+/F8 18 0 R
+/F9 19 0 R
+/F10 20 0 R
+/F11 21 0 R
+/F12 22 0 R
+/F13 23 0 R
+/F14 24 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+25 0 obj
+<<
+/Producer (jsPDF 2.5.1)
+/CreationDate (D:20260831092629+05'30')
+>>
+endobj
+26 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 27
+0000000000 65535 f 
+0000014919 00000 n 
+0000016759 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000004294 00000 n 
+0000004431 00000 n 
+0000008108 00000 n 
+0000008245 00000 n 
+0000012291 00000 n 
+0000012429 00000 n 
+0000014994 00000 n 
+0000015120 00000 n 
+0000015251 00000 n 
+0000015385 00000 n 
+0000015523 00000 n 
+0000015647 00000 n 
+0000015776 00000 n 
+0000015908 00000 n 
+0000016044 00000 n 
+0000016172 00000 n 
+0000016299 00000 n 
+0000016428 00000 n 
+0000016561 00000 n 
+0000016663 00000 n 
+0000017012 00000 n 
+0000017098 00000 n 
+trailer
+<<
+/Size 27
+/Root 26 0 R
+/Info 25 0 R
+/ID [ <5CF22B761AC54B6B4C9FF5AE000BE88B> <5CF22B761AC54B6B4C9FF5AE000BE88B> ]
+>>
+startxref
+17202
+%%EOF
