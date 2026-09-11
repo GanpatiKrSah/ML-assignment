@@ -1,0 +1,120 @@
+Program 1
+from gensim.models import Word2Vec
+
+corpus = [
+    ["machine", "learning", "is", "fun"],
+    ["deep", "learning", "uses", "neural", "networks"],
+    ["deep", "learning"]
+]
+
+model = Word2Vec(sentences=corpus, vector_size=50, window=2, min_count=1, workers=1)
+
+print("Embedding for 'learning':")
+print(model.wv["learning"])
+
+print("\nWords similar to 'learning':")
+print(model.wv.most_similar("learning"))
+
+
+Program 2
+import numpy as np
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+iris = load_iris()
+X, y = iris.data, iris.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+model = Sequential([
+    Dense(16, activation='relu', input_shape=(4,)),
+    Dense(12, activation='relu'),
+    Dense(8, activation='relu'),
+    Dense(3, activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.fit(X_train, y_train, epochs=50, batch_size=8, verbose=1)
+
+loss, accuracy = model.evaluate(X_test, y_test, verbose=0)
+print(f"Test Accuracy: {accuracy * 100:.2f}%")
+
+predictions = model.predict(X_test)
+print("Predicted:", np.argmax(predictions, axis=1))
+print("Actual:   ", y_test)
+
+program 3
+
+import numpy as np
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train = x_train.reshape((-1, 28, 28, 1)).astype('float32') / 255.0
+x_test = x_test.reshape((-1, 28, 28, 1)).astype('float32') / 255.0
+y_train, y_test = to_categorical(y_train, 10), to_categorical(y_test, 10)
+
+model = Sequential([
+    Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+    MaxPooling2D((2, 2)),
+    Conv2D(64, (3, 3), activation='relu'),
+    MaxPooling2D((2, 2)),
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dropout(0.5),
+    Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.fit(x_train, y_train, epochs=10, batch_size=64, verbose=1)
+
+loss, acc = model.evaluate(x_test, y_test, verbose=0)
+print(f"Test Accuracy: {acc*100:.2f}%")
+
+predictions = model.predict(x_test[:10])
+print("Predicted:", np.argmax(predictions, axis=1))
+print("Actual:   ", np.argmax(y_test[:10], axis=1))
+
+Program 4 
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from tensorflow.keras import layers, Model
+
+(x_train, _), (x_test, _) = tf.keras.datasets.mnist.load_data()
+x_train = x_train.astype("float32") / 255
+x_test = x_test.astype("float32") / 255
+x_train = x_train.reshape(-1, 784)
+x_test = x_test.reshape(-1, 784)
+
+input_img = layers.Input(shape=(784,))
+encoded = layers.Dense(32, activation="relu")(input_img)       # compress
+decoded = layers.Dense(784, activation="sigmoid")(encoded)     # reconstruct
+
+autoencoder = Model(input_img, decoded)
+autoencoder.compile(optimizer="adam", loss="binary_crossentropy")
+autoencoder.fit(x_train, x_train, epochs=5, batch_size=256)
+
+encoder = Model(input_img, encoded)
+encoded_imgs = encoder.predict(x_test)
+decoded_imgs = autoencoder.predict(x_test)
+
+n = 5
+plt.figure(figsize=(10, 4))
+for i in range(n):
+    ax = plt.subplot(2, n, i + 1)
+    plt.imshow(x_test[i].reshape(28, 28), cmap='gray'); plt.title("Original"); plt.axis('off')
+    ax = plt.subplot(2, n, i + 1 + n)
+    plt.imshow(decoded_imgs[i].reshape(28, 28), cmap='gray'); plt.title("Reconstructed"); plt.axis('off')
+plt.show()
+
+print("Original size:", x_test.shape)
+print("Compressed size:", encoded_imgs.shape)
+
